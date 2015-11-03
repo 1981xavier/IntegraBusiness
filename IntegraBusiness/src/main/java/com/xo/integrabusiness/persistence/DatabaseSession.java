@@ -17,28 +17,38 @@ import org.hibernate.cfg.Configuration;
  */
 class DatabaseSession {
 
+    private Configuration configuration;
+    private SessionFactory sessionFactory;
+    private Session session;
     
     public DatabaseSession(){
-    
+        this.configuration = new Configuration();
+        this.configuration.configure();
+        this.buildSessionFactory();
     }
     
+    public DatabaseSession(String resourceURL){
+        this.configuration = new Configuration();
+        this.configuration.configure(resourceURL);        
+        this.buildSessionFactory();
+    }
+    
+    private void buildSessionFactory(){
+        if(this.sessionFactory==null){
+             this.sessionFactory = this.configuration.buildSessionFactory();
+        }
+    }
   
     
-    public Session establishSession() {
-        Configuration configuration= new Configuration();
-        configuration.configure();
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        return session;
-    }
+    public Session establishSession(){
+        if(this.session==null){
+            this.session = sessionFactory.openSession();
+        }
+        return this.session;
+    } 
+   
 
-    public Session establishSession(String resourceURL) {
-        Configuration configuration= new Configuration();
-        configuration.configure();
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        return session;
-    }
+
     
  
 }

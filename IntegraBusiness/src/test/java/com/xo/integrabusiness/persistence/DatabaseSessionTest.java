@@ -43,16 +43,19 @@ public class DatabaseSessionTest {
         DatabaseSession databaseSession = new DatabaseSession();
         Session session = databaseSession.establishSession();
         assertTrue(session.isConnected());
-    
+        session.close();
     }
     
     @Test
     public void createSessionWithNonDefaultParameters(){
         String resourceURL="extraConfig.cfg.xml";
-        DatabaseSession databaseSession = new DatabaseSession();
-        Session session = databaseSession.establishSession(resourceURL);
-        assertTrue(session.isConnected());
+        DatabaseSession databaseSession = new DatabaseSession(resourceURL);
+        Session session = databaseSession.establishSession();        
+        
+        assertTrue(session.isOpen());
     
+        session.close();
+        
     }
     
 }
