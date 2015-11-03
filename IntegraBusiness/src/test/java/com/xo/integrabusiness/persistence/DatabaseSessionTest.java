@@ -40,7 +40,8 @@ public class DatabaseSessionTest {
     
     @Test
     public void getSessionWithDefaultParameters(){
-        DatabaseSession databaseSession = new DatabaseSession();
+        DatabaseSession databaseSession ; 
+        databaseSession = DatabaseSession.StartWithDefaultConfiguration();
         Session session = databaseSession.getSession();
         assertTrue(session.isConnected());
         session.close();
@@ -49,18 +50,19 @@ public class DatabaseSessionTest {
     @Test
     public void getSessionWithNonDefaultParameters(){
         String resourceURL="extraConfig.cfg.xml";
-        DatabaseSession databaseSession = new DatabaseSession(resourceURL);
-        Session session = databaseSession.getSession();        
+        DatabaseSession databaseSession ; 
+        databaseSession =DatabaseSession.StartWithURLResource(resourceURL);
+        Session session = databaseSession.getSession();   
         
-        assertTrue(session.isOpen());
-    
+        assertTrue(session.isOpen());    
         session.close();
         
     }
     
     @Test
     public void closeSession(){
-        DatabaseSession databaseSession = new DatabaseSession();
+        DatabaseSession databaseSession ; 
+        databaseSession = DatabaseSession.StartWithDefaultConfiguration();
         Session session = databaseSession.getSession();                
         databaseSession.closeSession();
         databaseSession.closeSession();
@@ -69,7 +71,8 @@ public class DatabaseSessionTest {
     
     @Test
     public void closeAllSessionResources(){
-        DatabaseSession databaseSession = new DatabaseSession();
+        DatabaseSession databaseSession ; 
+        databaseSession = DatabaseSession.StartWithDefaultConfiguration();
         Session session = databaseSession.getSession();                
         databaseSession.closeAllSessionResources();
         assertFalse(session.isOpen());

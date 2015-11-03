@@ -21,17 +21,26 @@ class DatabaseSession {
     private SessionFactory sessionFactory;
     private Session session;
     
-    public DatabaseSession(){
+    private DatabaseSession(){
         this.configuration = new Configuration();
         this.configuration.configure();
         this.buildSessionFactory();
     }
     
-    public DatabaseSession(String resourceURL){
+    public static DatabaseSession StartWithDefaultConfiguration(){
+        return new DatabaseSession();
+    }
+    
+    private DatabaseSession(String resourceURL){
         this.configuration = new Configuration();
         this.configuration.configure(resourceURL);        
         this.buildSessionFactory();
     }
+    
+     public static DatabaseSession StartWithURLResource(String resourceURL){
+        return new DatabaseSession(resourceURL);
+    }
+    
     
     private void buildSessionFactory(){
         if(this.sessionFactory==null){
