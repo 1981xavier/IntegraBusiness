@@ -22,7 +22,17 @@ class DatabaseSession {
     
     }
     
+  
+    
     public Session establishSession() {
+        Configuration configuration= new Configuration();
+        configuration.configure();
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        return session;
+    }
+
+    public Session establishSession(String resourceURL) {
         Configuration configuration= new Configuration();
         configuration.configure();
         SessionFactory sessionFactory = configuration.buildSessionFactory();

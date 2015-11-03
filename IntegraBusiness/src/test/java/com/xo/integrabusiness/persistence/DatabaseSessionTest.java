@@ -46,4 +46,13 @@ public class DatabaseSessionTest {
     
     }
     
+    @Test
+    public void createSessionWithNonDefaultParameters(){
+        String resourceURL="extraConfig.cfg.xml";
+        DatabaseSession databaseSession = new DatabaseSession();
+        Session session = databaseSession.establishSession(resourceURL);
+        assertTrue(session.isConnected());
+    
+    }
+    
 }
