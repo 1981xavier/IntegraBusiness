@@ -19,11 +19,16 @@ class PersistenceHandler {
     private DatabaseSession databaseSession;
     private String messages;
     
-    PersistenceHandler(PersistenceClient persistenceClient) {
+    private PersistenceHandler(PersistenceClient persistenceClient) {
         this.persistenceClient=persistenceClient;
         this.databaseSession= this.persistenceClient.getDatabaseSession();
         this.messages="";
     }   
+    
+    
+    public static PersistenceHandler usePersistenceClient(PersistenceClient persistenceClient){
+        return new PersistenceHandler(persistenceClient);
+    }
     
     public void executeProcess() {
         this.isSuccessful= false;

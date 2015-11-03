@@ -24,7 +24,7 @@ public class PersistenceHandlerTest {
     private boolean fail=false;
     
     public PersistenceHandlerTest() {
-        this.databaseSession = DatabaseSession.StartWithDefaultConfiguration(); 
+        this.databaseSession = DatabaseSession.startWithDefaultConfiguration(); 
     }
     
     @BeforeClass
@@ -43,22 +43,22 @@ public class PersistenceHandlerTest {
     public void tearDown() {
     }
     
-   
+    private void commonPersistenceHandlerExecution(){
+        this.persistenceClient = new SamplePersistenceClient(this.databaseSession,this.fail);                 
+        this.persistenceHandler = PersistenceHandler.usePersistenceClient(this.persistenceClient);
+        persistenceHandler.executeProcess();
+    }
     
     @Test
     public void executeProcessWithSuccessTransaction(){        
         this.fail=false;
-        this.persistenceClient = new SamplePersistenceClient(this.databaseSession,this.fail);                 
-        this.persistenceHandler = new PersistenceHandler(this.persistenceClient);
-        persistenceHandler.executeProcess();
+        this.commonPersistenceHandlerExecution();
         assertTrue(this.persistenceHandler.isSuccessful());
     }    
     @Test
     public void executeProcessWithFailedTransaction(){
         this.fail=true;
-        this.persistenceClient = new SamplePersistenceClient(this.databaseSession,this.fail);                 
-        this.persistenceHandler = new PersistenceHandler(this.persistenceClient);
-        persistenceHandler.executeProcess();
+        this.commonPersistenceHandlerExecution();
         assertFalse(persistenceHandler.isSuccessful());     
     }    
 }
