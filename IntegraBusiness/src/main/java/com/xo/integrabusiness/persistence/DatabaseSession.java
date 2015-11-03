@@ -27,7 +27,7 @@ class DatabaseSession {
         this.buildSessionFactory();
     }
     
-    public static DatabaseSession StartWithDefaultConfiguration(){
+    public static DatabaseSession startWithDefaultConfiguration(){
         return new DatabaseSession();
     }
     
@@ -37,7 +37,7 @@ class DatabaseSession {
         this.buildSessionFactory();
     }
     
-     public static DatabaseSession StartWithURLResource(String resourceURL){
+     public static DatabaseSession startWithURLResource(String resourceURL){
         return new DatabaseSession(resourceURL);
     }
     
