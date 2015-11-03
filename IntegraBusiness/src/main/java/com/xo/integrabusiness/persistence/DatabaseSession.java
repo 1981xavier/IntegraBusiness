@@ -40,12 +40,19 @@ class DatabaseSession {
     }
   
     
-    public Session establishSession(){
+    private void establishSession(){
         if(this.session==null){
             this.session = sessionFactory.openSession();
         }
-        return this.session;
+        
     } 
+    
+    
+    public Session getSession(){
+        this.establishSession();
+        return this.session;
+    }
+    
 
     public void close() {
         this.session.flush();
