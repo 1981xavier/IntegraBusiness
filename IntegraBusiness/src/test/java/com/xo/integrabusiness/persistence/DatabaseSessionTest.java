@@ -58,4 +58,21 @@ public class DatabaseSessionTest {
         
     }
     
+    @Test
+    public void closeSession(){
+        DatabaseSession databaseSession = new DatabaseSession();
+        Session session = databaseSession.establishSession();                
+        databaseSession.close();        
+        assertFalse(session.isOpen());
+    }
+    
+    @Test
+    public void closeSessionWithFactory(){
+        DatabaseSession databaseSession = new DatabaseSession();
+        Session session = databaseSession.establishSession();                
+        databaseSession.closeAll();        
+        assertFalse(session.isOpen());
+    }
+    
+    
 }

@@ -46,7 +46,17 @@ class DatabaseSession {
         }
         return this.session;
     } 
+
+    public void close() {
+        this.session.flush();
+        this.session.clear();
+        this.session.close();
+    }
    
+    public void closeAll(){
+        this.close();
+        this.sessionFactory.close();
+    }
 
 
     
