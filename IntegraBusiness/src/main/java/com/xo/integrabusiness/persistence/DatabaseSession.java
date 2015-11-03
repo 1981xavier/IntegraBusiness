@@ -54,14 +54,14 @@ class DatabaseSession {
     }
     
 
-    public void close() {
+    public void closeSession() {
         this.session.flush();
         this.session.clear();
         this.session.close();
     }
    
-    public void closeAll(){
-        this.close();
+    public void closeAllSessionResources(){
+        this.closeSession();
         this.sessionFactory.close();
     }
 
