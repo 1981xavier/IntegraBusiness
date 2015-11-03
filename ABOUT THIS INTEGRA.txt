@@ -1,0 +1,11 @@
+					ABOUT THIS INTEGRA
+
+	
+	The purpose of this project is to create a core to build new software application. 
+This core will have many utilities what a developer can use in simple way. The utilities will
+focus on small business applications, so they will be a initial point to create a simple 
+business library.
+
+
+
+  
