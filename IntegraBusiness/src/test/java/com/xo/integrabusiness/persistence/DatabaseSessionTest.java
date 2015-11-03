@@ -63,6 +63,7 @@ public class DatabaseSessionTest {
         DatabaseSession databaseSession = new DatabaseSession();
         Session session = databaseSession.getSession();                
         databaseSession.closeSession();
+        databaseSession.closeSession();
         assertFalse(session.isOpen());
     }
     
