@@ -60,5 +60,12 @@ public class PersistenceHandlerTest {
         this.fail=true;
         this.commonPersistenceHandlerExecution();
         assertFalse(persistenceHandler.isSuccessful());     
-    }    
+    }   
+    
+    @Test
+    public void executeClient(){
+        this.persistenceClient = new SamplePersistenceClient(this.databaseSession,false);    
+        this.persistenceHandler=PersistenceHandler.executeClient(this.persistenceClient);
+        assertTrue(this.persistenceHandler.isSuccessful());    
+    }
 }

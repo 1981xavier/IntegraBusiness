@@ -48,6 +48,13 @@ public class PersistenceHandler {
         }
     }
     
+    public static PersistenceHandler executeClient(PersistenceClient persistenceClient){
+        PersistenceHandler persistenceHandler= new PersistenceHandler(persistenceClient);
+        persistenceHandler.executeProcess();
+        return persistenceHandler;
+    }
+    
+    
     public boolean isSuccessful(){
         return this.isSuccessful;
     }
