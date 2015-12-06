@@ -15,7 +15,7 @@ import org.hibernate.cfg.Configuration;
  *
  * @author admin
  */
-class DatabaseSession {
+public class DatabaseSession {
 
     private Configuration configuration;
     private SessionFactory sessionFactory;
@@ -65,8 +65,7 @@ class DatabaseSession {
 
     public void closeSession() {
         if(this.session.isOpen())
-        {
-            this.session.flush();
+        {          
             this.session.clear();
             this.session.close();
         }
