@@ -18,6 +18,6 @@ public abstract class PersistenceClient {
         return this.databaseSession;
     }
     
-    public abstract void executeProcess();
+    protected abstract void executeProcess();
     
 }
