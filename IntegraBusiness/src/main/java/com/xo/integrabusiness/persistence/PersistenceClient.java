@@ -11,7 +11,7 @@ import org.hibernate.Session;
  *
  * @author admin
  */
-abstract class PersistenceClient {
+public abstract class PersistenceClient {
     protected DatabaseSession databaseSession;
     
     public final DatabaseSession getDatabaseSession(){

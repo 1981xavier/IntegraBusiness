@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
  *
  * @author admin
  */
-class PersistenceHandler {
+public class PersistenceHandler {
 
     private boolean isSuccessful;
     private PersistenceClient persistenceClient;
